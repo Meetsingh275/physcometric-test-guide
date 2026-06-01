@@ -1,6 +1,8 @@
 import pandas as pd
 import pickle
 
+print("gihub repo update test")
+
 # Load saved model
 with open("career_model.pkl", "rb") as file:
     model = pickle.load(file)

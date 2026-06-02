@@ -4,7 +4,7 @@ import pickle
 
 # Load model
 with open("career_model.pkl", "rb") as file:
-     model = pickle.load(file)
+    model = pickle.load(file)
 
 st.title("Career Prediction System")
 

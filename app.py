@@ -1,20 +1,25 @@
+
 import streamlit as st
 import pandas as pd
 import pickle
-from career_info import career_info
 import matplotlib.pyplot as plt
+from career_info import career_info
 
+# -----------------------------
+# Page Config
+# -----------------------------
 st.set_page_config(
     page_title="Career Prediction System",
     page_icon="🎯",
     layout="centered"
 )
 
-st.write(f"{i}. {emoji} {career}")
-st.write(f"⭐ Match Score: {score:.2f}%")
-st.progress(float(prob))
-st.divider()
+st.title("🎯 Career Prediction System")
+st.write("Find your best career based on your psychometric assessment.")
+
+# -----------------------------
 # Load Model
+# -----------------------------
 try:
     with open("career_model.pkl", "rb") as file:
         model = pickle.load(file)
@@ -22,7 +27,9 @@ except Exception as e:
     st.error(f"Model Loading Error: {e}")
     st.stop()
 
-# Input Sliders
+# -----------------------------
+# User Inputs
+# -----------------------------
 st.subheader("📝 Enter Your Scores")
 
 logical = st.slider("🧠 Logical Score", 0, 100, 50)
@@ -36,6 +43,9 @@ business = st.slider("💼 Business Interest", 0, 100, 50)
 artistic = st.slider("🖌️ Artistic Interest", 0, 100, 50)
 stress = st.slider("😌 Stress Handling", 0, 100, 50)
 
+# -----------------------------
+# Predict Button
+# -----------------------------
 if st.button("🚀 Predict Career"):
 
     sample = pd.DataFrame(
@@ -76,51 +86,39 @@ if st.button("🚀 Predict Career"):
             reverse=True
         )[:3]
 
-        st.markdown("---")
+        st.divider()
 
-        st.markdown("""
-        <h2 style='text-align:center; color:#ff6600;'>
-        🏆 Top 3 Career Recommendations
-        </h2>
-        """, unsafe_allow_html=True)
+        st.subheader("🏆 Top 3 Career Recommendations")
 
         emojis = {
+            "Software Developer": "💻",
             "Data Analyst": "📊",
             "Graphic Designer": "🎨",
-            "Software Developer": "💻",
             "Doctor": "🩺",
             "Teacher": "📚",
             "Engineer": "⚙️",
-            "Lawyer": "⚖️",
-            "Business Analyst": "💼",
-            "Entrepreneur": "🚀",
-            "Nurse": "🏥",
-            "Scientist": "🔬"
+            "Psychologist": "🧠",
+            "Civil Services": "🏛️",
+            "Marketing Professional": "📢",
+            "Entrepreneur": "🚀"
         }
 
+        # -----------------------------
+        # Top 3 Careers
+        # -----------------------------
         for i, (career, prob) in enumerate(results, start=1):
 
             score = prob * 100
             emoji = emojis.get(career, "⭐")
 
-            st.markdown(
-                f"""
-                <div style="
-                    background:#f8f9fa;
-                    padding:15px;
-                    border-radius:15px;
-                    margin-bottom:10px;
-                    border-left:8px solid #4CAF50;
-                ">
-                    <h3>{i}. {emoji} {career}</h3>
-                    <h4>⭐ Match Score: {score:.2f}%</h4>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
+            st.subheader(f"{i}. {emoji} {career}")
+            st.write(f"⭐ Match Score: {score:.2f}%")
             st.progress(float(prob))
+            st.divider()
 
+        # -----------------------------
+        # Best Career
+        # -----------------------------
         best_career = results[0][0]
         best_score = results[0][1] * 100
 
@@ -128,23 +126,14 @@ if st.button("🚀 Predict Career"):
             f"🏆 Best Career Match: {best_career} ({best_score:.2f}%)"
         )
 
-        st.info(
-            "💡 This recommendation is based on your psychometric assessment."
+        st.metric(
+            "🎯 Prediction Confidence",
+            f"{best_score:.2f}%"
         )
 
-        st.markdown("""
-        ### 🚀 Career Tips
-        ✅ Improve your skills regularly  
-        ✅ Build projects and portfolio  
-        ✅ Learn communication skills  
-        ✅ Keep exploring new technologies  
-        """)
-
-        st.balloons()
-                # ===========================
-        # Career Details
-        # ===========================
-
+        # -----------------------------
+        # Skills & Roadmap
+        # -----------------------------
         if best_career in career_info:
 
             st.subheader("📚 Recommended Skills")
@@ -157,10 +146,9 @@ if st.button("🚀 Predict Career"):
             for step in career_info[best_career]["roadmap"]:
                 st.write(f"➡️ {step}")
 
-        # ===========================
-        # Skill Analysis
-        # ===========================
-
+        # -----------------------------
+        # Strong & Weak Skills
+        # -----------------------------
         scores = {
             "Logical": logical,
             "Numerical": numerical,
@@ -172,59 +160,51 @@ if st.button("🚀 Predict Career"):
         strong = []
         weak = []
 
-        for skill, score in scores.items():
+        for skill, value in scores.items():
 
-            if score >= 70:
+            if value >= 70:
                 strong.append(skill)
             else:
                 weak.append(skill)
 
         st.subheader("💪 Strong Skills")
 
-        for s in strong:
-            st.success(s)
+        if strong:
+            for s in strong:
+                st.success(s)
 
         st.subheader("📈 Skills To Improve")
 
-        for s in weak:
-            st.warning(s)
+        if weak:
+            for s in weak:
+                st.warning(s)
 
-        # ===========================
+        # -----------------------------
         # Performance Chart
-        # ===========================
-
+        # -----------------------------
         st.subheader("📊 Performance Chart")
 
         fig, ax = plt.subplots(figsize=(8, 4))
-
-        ax.bar(
-            scores.keys(),
-            scores.values()
-        )
-
+        ax.bar(scores.keys(), scores.values())
         ax.set_ylabel("Score")
         ax.set_title("Skill Scores")
 
         st.pyplot(fig)
 
-        # ===========================
-        # Confidence Meter
-        # ===========================
+        # -----------------------------
+        # Career Tips
+        # -----------------------------
+        st.subheader("🚀 Career Tips")
 
-        confidence = results[0][1] * 100
+        st.write("✅ Improve your skills regularly")
+        st.write("✅ Build projects and portfolio")
+        st.write("✅ Learn communication skills")
+        st.write("✅ Keep exploring new technologies")
 
-        st.metric(
-            "🎯 Prediction Confidence",
-            f"{confidence:.2f}%"
-        )
-
-        # ===========================
-        # Motivation Section
-        # ===========================
-
-        st.success(
-            f"🚀 You are highly suited for a career in {best_career}"
-        )
+        st.balloons()
 
     except Exception as e:
         st.error(f"Prediction Error: {e}")
+
+    
+            

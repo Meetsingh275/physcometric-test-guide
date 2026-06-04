@@ -1,0 +1,29 @@
+# Psychometric Test Guide
+
+A Machine Learning based Career Prediction and Psychometric Assessment System built using Python and Streamlit.
+
+## Features
+
+- Career Prediction
+- Psychometric Assessment
+- Top 3 Career Recommendations
+- Skill Analysis
+- Learning Roadmap
+- Performance Charts
+
+## Technologies Used
+
+- Python
+- Streamlit
+- Pandas
+- Scikit-Learn
+- Matplotlib
+
+## Live Demo
+
+Add your Streamlit app link here.
+
+## Author
+
+Meet Singh
+https://physcometric-test-guide-me2blymskdveors8fa3npx.streamlit.app/

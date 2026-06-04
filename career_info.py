@@ -1,4 +1,5 @@
 career_info = {
+
     "Software Developer": {
         "skills": ["Python", "DSA", "Git", "Web Development"],
         "roadmap": [
@@ -37,55 +38,6 @@ career_info = {
             "Specialization"
         ]
     },
-    "Engineer": {
-    "skills": ["Mathematics", "Problem Solving", "CAD", "Programming"],
-    "roadmap": [
-        "Learn Engineering Fundamentals",
-        "Practice Problem Solving",
-        "Build Technical Projects",
-        "Apply for Internships"
-    ]
-},
-
-"Psychologist": {
-    "skills": ["Counselling", "Human Behaviour", "Communication"],
-    "roadmap": [
-        "Study Psychology",
-        "Learn Counselling Skills",
-        "Gain Practical Experience",
-        "Specialize in a Field"
-    ]
-},
-
-"Civil Services": {
-    "skills": ["General Knowledge", "Reasoning", "Writing"],
-    "roadmap": [
-        "Prepare NCERT Basics",
-        "Study Current Affairs",
-        "Practice Mock Tests",
-        "Prepare for UPSC/State Exams"
-    ]
-},
-
-"Marketing Professional": {
-    "skills": ["Digital Marketing", "SEO", "Communication"],
-    "roadmap": [
-        "Learn Marketing Basics",
-        "Learn SEO & Social Media",
-        "Work on Campaigns",
-        "Build Portfolio"
-    ]
-},
-
-"Business / Entrepreneur": {
-    "skills": ["Leadership", "Finance", "Business Strategy"],
-    "roadmap": [
-        "Learn Business Basics",
-        "Understand Finance",
-        "Create Business Plan",
-        "Launch Small Projects"
-    ]
-}
 
     "Teacher": {
         "skills": ["Communication", "Teaching", "Presentation"],
@@ -94,5 +46,56 @@ career_info = {
             "Teaching Practice",
             "Classroom Management"
         ]
+    },
+
+    "Engineer": {
+        "skills": ["Mathematics", "Problem Solving", "CAD", "Programming"],
+        "roadmap": [
+            "Learn Engineering Fundamentals",
+            "Practice Problem Solving",
+            "Build Technical Projects",
+            "Apply for Internships"
+        ]
+    },
+
+    "Psychologist": {
+        "skills": ["Counselling", "Human Behaviour", "Communication"],
+        "roadmap": [
+            "Study Psychology",
+            "Learn Counselling Skills",
+            "Gain Practical Experience",
+            "Specialize in a Field"
+        ]
+    },
+
+    "Civil Services": {
+        "skills": ["General Knowledge", "Reasoning", "Writing"],
+        "roadmap": [
+            "Prepare NCERT Basics",
+            "Study Current Affairs",
+            "Practice Mock Tests",
+            "Prepare for UPSC/State Exams"
+        ]
+    },
+
+    "Marketing Professional": {
+        "skills": ["Digital Marketing", "SEO", "Communication"],
+        "roadmap": [
+            "Learn Marketing Basics",
+            "Learn SEO & Social Media",
+            "Work on Campaigns",
+            "Build Portfolio"
+        ]
+    },
+
+    "Entrepreneur": {
+        "skills": ["Leadership", "Finance", "Business Strategy"],
+        "roadmap": [
+            "Learn Business Basics",
+            "Understand Finance",
+            "Create Business Plan",
+            "Launch Small Projects"
+        ]
     }
+
 }

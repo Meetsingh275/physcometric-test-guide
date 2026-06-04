@@ -10,12 +10,10 @@ st.set_page_config(
     layout="centered"
 )
 
-st.markdown("""
-<h1 style='text-align:center; color:#4CAF50;'>
-🎯 Career Prediction System 🚀
-</h1>
-""", unsafe_allow_html=True)
-
+st.write(f"{i}. {emoji} {career}")
+st.write(f"⭐ Match Score: {score:.2f}%")
+st.progress(float(prob))
+st.divider()
 # Load Model
 try:
     with open("career_model.pkl", "rb") as file:
